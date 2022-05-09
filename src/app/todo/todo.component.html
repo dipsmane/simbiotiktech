@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="myForm" (ngSubmit)="onAddTask()">
+                <div class="form-group mt-2">
+                    <h2 class="Todo">Todo List</h2>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" placeholder="Add Task" formControlName="task" required
+                            [ngClass]="{'is-invalid': t['task'].touched && t['task'].errors}">
+                        <div *ngIf="t['task'].touched && t['task'].errors?.required" class="invalid-feedback">Task is
+                            required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <button class="btn btn-secondary"> Add </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-borderless">
+                <tr *ngFor="let dt of userData">
+                    <td>{{dt.task}}</td>
+                    <td> <button (click)="onDone(dt)" type="button" class="btn btn-info"
+                            [disabled]="dt.status">Done</button></td>
+                    <td> <button (click)="onRemove(dt)" type="button" class="btn btn-warning">Remove</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
