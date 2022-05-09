@@ -16,6 +16,7 @@ export class TodoComponent implements OnInit {
   task: any = '';
 
   ngOnInit(): void {
+    //create form using form builder also applied validator
     this.myForm = this.fb.group({
       task: ['', [Validators.required]]
     })
